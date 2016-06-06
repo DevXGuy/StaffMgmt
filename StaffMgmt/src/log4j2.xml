@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Appenders>
+		<Console name="ConsoleLogger" target="SYSTEM_OUT">
+			<PatternLayout>
+				<Pattern>%d{dd MMM yyyy HH:mm:ss} [%c{3}] [%p] %m%n</Pattern>
+			</PatternLayout>
+		</Console>
+		<RollingFile name="RollingLogger" fileName="d:/log/StaffMgmt/AppLog.log"
+			filePattern="AppLog-%d{MM-dd-yyyy}-%i.log">
+			<PatternLayout>
+				<Pattern>%d{dd MMM yyyy HH:mm:ss} [%c{3}] [%p] %m%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="1 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="2000" />
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Root level="info">
+			<AppenderRef ref="RollingLogger" />
+			<AppenderRef ref="ConsoleLogger" />
+		</Root>
+	</Loggers>
+</Configuration>
